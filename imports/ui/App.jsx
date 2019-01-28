@@ -50,11 +50,11 @@ import { getSelectedUser } from './selecteduser.js';
   //    console.log(index1);
 
 
-      return myScores.map((task) => {
+      return myScores.map((score) => {
           return (
             <Score
-              key={task._id}
-              task={task}
+              key={score._id}
+              score={score}
             />
           );
       });

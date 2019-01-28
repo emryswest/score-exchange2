@@ -8,7 +8,7 @@ import { Tasks } from '../api/tasks.js';
 export default class Score extends Component {
 
 deleteThisTask() {
-    Meteor.call('tasks.remove', this.props.task._id);
+    Meteor.call('tasks.remove', this.props.score._id);
 }
 
   render() {
@@ -16,9 +16,9 @@ deleteThisTask() {
     return (
       <li className="taskClassName" onClick={this.deleteThisTask.bind(this)}>
         <span className="text">
-        <strong>{this.props.task.username}</strong>: { this.props.task.text.match(/^http.*\.(png|jpg|jpeg|gif|bmp)$/i) ? (
-   <img className="taskthumb" src={ this.props.task.text }/>
- ) : this.props.task.text }
+        <strong>{this.props.score.username}</strong>: { this.props.score.text.match(/^http.*\.(png|jpg|jpeg|gif|bmp)$/i) ? (
+   <img className="taskthumb" src={ this.props.score.text }/>
+ ) : this.props.score.text }
         </span>
       </li>
     );
