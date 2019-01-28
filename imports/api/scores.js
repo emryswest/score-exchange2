@@ -3,8 +3,8 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 import { setSelectedUser, getSelectedUser } from '../ui/selecteduser';
 
+// Collection for the scores that are sent to other players
 export const Scores = new Mongo.Collection('scores');
-
 
 if (Meteor.isServer) {
   // This code only runs on the server

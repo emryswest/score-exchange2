@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { FilesCollection } from 'meteor/ostrio:files';
 
+// Collection for the scores users upload into their bag
 export const UserFiles = new FilesCollection({collectionName: 'userfiles'});
 
 if (Meteor.isClient) {
