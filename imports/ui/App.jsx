@@ -29,7 +29,7 @@ import { getSelectedUser } from './selecteduser.js';
 
 
     renderScores() {
-      let myScores = this.props.tasks;
+      let myScores = this.props.scores;
       let recentScores;
     //  let index1;
 
@@ -61,8 +61,8 @@ import { getSelectedUser } from './selecteduser.js';
     }
 
     prepareMyScores() {
-      let scores = this.props.tasks;
-      let myScores = scores.filter(task =>
+      let activeScores = this.props.scores;
+      let myScores = activeScores.filter(task =>
       task.targetuser == Meteor.userId()
       );
       return (
@@ -71,7 +71,7 @@ import { getSelectedUser } from './selecteduser.js';
     }
 
     passAllScores() {
-      let passAllScores = this.props.tasks.username;
+      let passAllScores = this.props.scores.username;
       return (
         passAllScores
       )
@@ -107,7 +107,7 @@ export default withTracker(() => {
 
 
   return {
-    tasks: Tasks.find({}, { sort: { createdAt: 1 } }).fetch(),
+    scores: Tasks.find({}, { sort: { createdAt: 1 } }).fetch(),
     currentUser: Meteor.user(),
   };
 })(App);
