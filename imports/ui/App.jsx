@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 
-import { Scores } from '../api/tasks.js';
+import { Scores } from '../api/scores.js';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
-import Score from './Task.js';
+import Score from './Score.js';
 import IndividualFile from './FileIndividualFile.js';
 import AccountsUIWrapper from './AccountsUIWrapper.js';
 import FileUpload from './FileUpload.js';

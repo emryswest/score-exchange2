@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 
-import { Scores } from '../api/tasks.js';
+import { Scores } from '../api/scores.js';
 
 
 // Score component - represents a single score item

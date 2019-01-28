@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { UserFiles } from '../api/files.js';
 import { getSelectedUser } from '../ui/selecteduser';
 
+// IndividualFile component - represents an instance of an uploaded score
 class IndividualFile extends Component {
   constructor(props) {
     super(props);

@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { setSelectedUser, getSelectedUser } from '../ui/selecteduser';
 
-// App component - represents the whole app
 class UserList extends Component {
   constructor(props) {
     super(props);

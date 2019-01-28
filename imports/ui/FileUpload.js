@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { UserFiles } from '../api/files.js';
 import IndividualFile from './FileIndividualFile.js';
 
-// App component - represents the whole app
+// FileUpload component - allows for file uploading
 class FileUpload extends Component {
   constructor(props) {
     super(props);
