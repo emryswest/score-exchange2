@@ -4,20 +4,20 @@ import { Meteor } from 'meteor/meteor';
 import { Tasks } from '../api/tasks.js';
 
 
-// Task component - represents a single todo item
+// Score component - represents a single score item
 export default class Score extends Component {
 
-deleteThisTask() {
+deleteThisScore() {
     Meteor.call('tasks.remove', this.props.score._id);
 }
 
   render() {
 
     return (
-      <li className="taskClassName" onClick={this.deleteThisTask.bind(this)}>
+      <li className="scoreClassName" onClick={this.deleteThisScore.bind(this)}>
         <span className="text">
         <strong>{this.props.score.username}</strong>: { this.props.score.text.match(/^http.*\.(png|jpg|jpeg|gif|bmp)$/i) ? (
-   <img className="taskthumb" src={ this.props.score.text }/>
+   <img className="scorethumb" src={ this.props.score.text }/>
  ) : this.props.score.text }
         </span>
       </li>
