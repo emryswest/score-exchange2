@@ -62,8 +62,8 @@ import { getSelectedUser } from './selecteduser.js';
 
     prepareMyScores() {
       let activeScores = this.props.scores;
-      let myScores = activeScores.filter(task =>
-      task.targetuser == Meteor.userId()
+      let myScores = activeScores.filter(score =>
+      score.targetuser == Meteor.userId()
       );
       return (
         myScores
