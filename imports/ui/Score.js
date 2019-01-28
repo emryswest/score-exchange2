@@ -15,10 +15,10 @@ deleteThisScore() {
 
     return (
       <li className="scoreClassName" onClick={this.deleteThisScore.bind(this)}>
-        <span className="text">
-        <strong>{this.props.score.username}</strong>: { this.props.score.text.match(/^http.*\.(png|jpg|jpeg|gif|bmp)$/i) ? (
-   <img className="scorethumb" src={ this.props.score.text }/>
- ) : this.props.score.text }
+        <span className="image">
+        <strong>{this.props.score.username}</strong>: { this.props.score.image.match(/^http.*\.(png|jpg|jpeg|gif|bmp)$/i) ? (
+   <img className="scorethumb" src={ this.props.score.image }/>
+ ) : this.props.score.image }
         </span>
       </li>
     );

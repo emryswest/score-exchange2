@@ -29,8 +29,8 @@ class IndividualFile extends Component {
 
   sendScore() {
 //    console.log(this.props);
-    var text = this.props.fileUrl;
-    Meteor.call('scores.insert', text, getSelectedUser());
+    var image = this.props.fileUrl;
+    Meteor.call('scores.insert', image, getSelectedUser());
   }
 
 
@@ -44,7 +44,7 @@ class IndividualFile extends Component {
         </button>
 
 
-        <span className="text">
+        <span className="image">
           <a href={this.props.fileUrl} className="btn btn-outline btn-primary btn-sm"
            target="_blank"><strong></strong></a>
            { this.props.fileUrl.match(/^http.*\.(png|jpg|jpeg|gif|bmp)$/i) ? (

@@ -18,9 +18,9 @@ import { getSelectedUser } from './selecteduser.js';
     event.preventDefault();
 
     // Find the text field via the React ref
-    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
+    const image = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
 
-    Meteor.call('scores.insert', text, getSelectedUser());
+    Meteor.call('scores.insert', image, getSelectedUser());
 
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
   }

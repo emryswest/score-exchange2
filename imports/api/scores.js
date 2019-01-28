@@ -20,7 +20,7 @@ if (Meteor.isServer) {
 
 Meteor.methods({
   // you have to specify the selectedUser so it gets sent to the server
-  'scores.insert'(text,selectedUser) {
+  'scores.insert'(image,selectedUser) {
 
     // Make sure the user is logged in before inserting a task
     if (! this.userId) {
@@ -28,7 +28,7 @@ Meteor.methods({
     }
     user = selectedUser;
     Scores.insert({
-      text: text,
+      image: image,
       createdAt: new Date(),
       owner: this.userId,
       targetuser: user,
