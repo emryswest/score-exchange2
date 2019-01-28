@@ -29,7 +29,7 @@ class IndividualFile extends Component {
   sendScore() {
 //    console.log(this.props);
     var text = this.props.fileUrl;
-    Meteor.call('tasks.insert', text, getSelectedUser());
+    Meteor.call('scores.insert', text, getSelectedUser());
   }
 
 

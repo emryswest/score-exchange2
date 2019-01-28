@@ -3,13 +3,13 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 import { setSelectedUser, getSelectedUser } from '../ui/selecteduser';
 
-export const Tasks = new Mongo.Collection('tasks');
+export const Scores = new Mongo.Collection('scores');
 
 
 if (Meteor.isServer) {
   // This code only runs on the server
-  Meteor.publish('tasks', function tasksPublication() {
-    return Tasks.find({
+  Meteor.publish('scores', function scoresPublication() {
+    return Scores.find({
       $or: [
         { private: { $ne: true } },
         { owner: this.userId },
@@ -20,14 +20,14 @@ if (Meteor.isServer) {
 
 Meteor.methods({
   // you have to specify the selectedUser so it gets sent to the server
-  'tasks.insert'(text,selectedUser) {
+  'scores.insert'(text,selectedUser) {
 
     // Make sure the user is logged in before inserting a task
     if (! this.userId) {
       throw new Meteor.Error('not-authorized');
     }
     user = selectedUser;
-    Tasks.insert({
+    Scores.insert({
       text: text,
       createdAt: new Date(),
       owner: this.userId,
@@ -36,13 +36,13 @@ Meteor.methods({
     });
     setSelectedUser(undefined);
   },
-  'tasks.remove'(taskId) {
-    check(taskId, String);
+  'scores.remove'(scoreId) {
+    check(scoreId, String);
 
-    const task = Tasks.findOne(taskId);
+    const score = Scores.findOne(scoreId);
 
 
-    Tasks.remove(taskId);
+    Scores.remove(scoreId);
   },
 });
 

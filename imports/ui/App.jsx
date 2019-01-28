@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 
-import { Tasks } from '../api/tasks.js';
+import { Scores } from '../api/tasks.js';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import Score from './Task.js';
@@ -20,7 +20,7 @@ import { getSelectedUser } from './selecteduser.js';
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
 
-    Meteor.call('tasks.insert', text, getSelectedUser());
+    Meteor.call('scores.insert', text, getSelectedUser());
 
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
   }
@@ -36,7 +36,7 @@ import { getSelectedUser } from './selecteduser.js';
         score.targetuser == Meteor.userId()
       );
       if (myScores.length > 1) {
-        Meteor.call('tasks.remove', myScores[0]._id);
+        Meteor.call('scores.remove', myScores[0]._id);
       }
 
   //    myTasks = myTasks.reverse();
@@ -105,7 +105,7 @@ export default withTracker(() => {
 
 
   return {
-    scores: Tasks.find({}, { sort: { createdAt: 1 } }).fetch(),
+    scores: Scores.find({}, { sort: { createdAt: 1 } }).fetch(),
     currentUser: Meteor.user(),
   };
 })(App);

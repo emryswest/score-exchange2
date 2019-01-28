@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 
-import { Tasks } from '../api/tasks.js';
+import { Scores } from '../api/tasks.js';
 
 
 // Score component - represents a single score item
 export default class Score extends Component {
 
 deleteThisScore() {
-    Meteor.call('tasks.remove', this.props.score._id);
+    Meteor.call('scores.remove', this.props.score._id);
 }
 
   render() {
