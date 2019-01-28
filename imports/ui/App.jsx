@@ -14,40 +14,21 @@ import { getSelectedUser } from './selecteduser.js';
   // App component - represents the whole app
   class App extends Component {
 
-    handleSubmit(event) {
-    event.preventDefault();
-
-    // Find the text field via the React ref
-    const image = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
-
-    Meteor.call('scores.insert', image, getSelectedUser());
-
-    ReactDOM.findDOMNode(this.refs.textInput).value = '';
-  }
-
-
-    renderScores() {
+    // display the score sent to the current user
+    renderScore() {
+      // retrieves a list of active scores from the Scores database
       let myScores = this.props.scores;
-      let recentScores;
-    //  let index1;
 
-      // show those for US or for anyone!
-      myScores = myScores.filter(score =>
-        score.targetuser == Meteor.userId()
-      );
+      // Filter out scores which are sent to the current user
+      myScores = myScores.filter(score => score.targetuser == Meteor.userId());
       if (myScores.length > 1) {
         Meteor.call('scores.remove', myScores[0]._id);
       }
 
-  //    myTasks = myTasks.reverse();
-
+      // Delete older scores, only showing the most recent one received
       myScores = myScores.length > 1 ? [ myScores[myScores.length - 1] ] : myScores;
 
-  //    index1 = myTasks.find[1];
-
-  //    console.log(index1);
-
-
+      // Return a Score component for the targetted score
       return myScores.map((score) => {
           return (
             <Score
@@ -57,8 +38,8 @@ import { getSelectedUser } from './selecteduser.js';
           );
       });
     }
-
-    prepareMyScores() {
+    // does the current user have a score in front of them? UserList needs this answer.
+    isScorePresent() {
       let activeScores = this.props.scores;
       let myScores = activeScores.filter(score =>
       score.targetuser == Meteor.userId()
@@ -68,41 +49,34 @@ import { getSelectedUser } from './selecteduser.js';
       )
     }
 
-    passAllScores() {
-      let passAllScores = this.props.scores.username;
-      return (
-        passAllScores
-      )
-    }
-
   render() {
-let passMyScores = this.prepareMyScores();
-let passAllScores = this.passAllScores();
+let isScorePresent = this.isScorePresent();
 
     return (
       <div>
         <div className="app-container">
-        <header>
-        <AccountsUIWrapper />
-          <h1>Players</h1>
+          <header>
+            <AccountsUIWrapper />
+              <h1>Players</h1>
+          </header>
 
-        </header>
-          <UserList myScores={passMyScores} passAllScores={passAllScores}/>
-          <div className="material">
-            <ul>
-              {this.renderScores()}
-            </ul>
+            <UserList isScorePresent={isScorePresent} />
+
+            <div className="material">
+              <ul>
+                {this.renderScore()}
+              </ul>
+            </ div>
+
+            <FileUpload />
+
           </ div>
-
-          <FileUpload />
-        </div>
-      </div>
+      </ div>
     );
   }
 }
 
 export default withTracker(() => {
-
 
   return {
     scores: Scores.find({}, { sort: { createdAt: 1 } }).fetch(),

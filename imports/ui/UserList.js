@@ -18,7 +18,6 @@ class UserList extends Component {
         setSelectedUser(undefined);
     } else {
         setSelectedUser(intermediate);
-        console.log(getSelectedUser());
     }
     this.setState({currentSelection: getSelectedUser()}); // force a re-render
   }
@@ -27,20 +26,18 @@ class UserList extends Component {
 
   render() {
     let users = Meteor.users.find({});
-    let myScores = this.props.myScores;
-    let passAllScores = this.props.passAllScores;
-    console.log(myScores);
+    let isScorePresent = this.props.isScorePresent;
     let display = users.map((aUser, key) => {
-      // Send out components that show details of each file
+      // display all other users (not current user) and select the user when clicked on
   if (aUser._id !== Meteor.userId()) {
       return <div className={aUser._id == getSelectedUser() ? 'highlighted-user' : 'individual-user'} onClick={this.clickUser.bind(this, aUser)} key={key}>
-      <li>{aUser.username}{passAllScores}</li>
+      <li>{aUser.username}</li>
       </div>
     }
     })
-
+    // display list of users - if there is a score in the way, condense the list
     return (
-      <div className={myScores.length > 0 ? "players-container-condensed" : "players-container"}>
+      <div className={isScorePresent.length > 0 ? "players-container-condensed" : "players-container"}>
         {display}
       </div>
     );

@@ -27,8 +27,7 @@ class FileUpload extends Component {
     let self = this;
 
     if (e.currentTarget.files && e.currentTarget.files[0]) {
-      // We upload only one file, in case
-      // there was multiple files selected
+      // We upload only one file, in case there were multiple files selected
       var file = e.currentTarget.files[0];
 
       if (file) {

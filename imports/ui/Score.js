@@ -12,7 +12,7 @@ deleteThisScore() {
 }
 
   render() {
-
+// display the score, and click on it to delete
     return (
       <li className="scoreClassName" onClick={this.deleteThisScore.bind(this)}>
         <span className="image">
