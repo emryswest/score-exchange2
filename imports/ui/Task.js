@@ -5,7 +5,7 @@ import { Tasks } from '../api/tasks.js';
 
 
 // Task component - represents a single todo item
-export default class Task extends Component {
+export default class Score extends Component {
 
 deleteThisTask() {
     Meteor.call('tasks.remove', this.props.task._id);

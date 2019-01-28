@@ -5,7 +5,7 @@ import { Tasks } from '../api/tasks.js';
 // import { Scores } from '../api/scores.js';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
-import Task from './Task.js';
+import Score from './Task.js';
 // import Score from './Score.js';
 import IndividualFile from './FileIndividualFile.js';
 import AccountsUIWrapper from './AccountsUIWrapper.js';
@@ -52,7 +52,7 @@ import { getSelectedUser } from './selecteduser.js';
 
       return myScores.map((task) => {
           return (
-            <Task
+            <Score
               key={task._id}
               task={task}
             />
